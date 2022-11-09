@@ -1,0 +1,17 @@
+.register form{
+    padding:5% 50px!important;   margin : 5% 30%  !important;
+}
+.content{
+    max-width: 500px;
+    margin: auto;
+    background-color: #fff;
+    padding: 5% 5%;
+  border:   1px rgb(158, 155, 155) solid;
+  }
+ label{ 
+width: 100%;
+text-align: start;
+   }
+   *{
+    margin: 0 auto ;
+   }
