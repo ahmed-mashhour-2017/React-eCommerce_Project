@@ -1,9 +1,10 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react'
 import './product.css';
 import {addToCart,remove} from '../../../helpers/cart-helper';
+ 
 export default function Product({  data}) {
 
-
+ 
  const [addButton,setAddButton]=useState(true);
  let [amount,setAmount]=useState(0);
   let cartProducts  = [];
@@ -25,6 +26,7 @@ export default function Product({  data}) {
                  
            }
         }
+        
       },[]);
          useEffect(()=>{
           addToCart(cartProducts,data,amount);
@@ -34,7 +36,7 @@ export default function Product({  data}) {
          <div   className="col-md-3 col-sm-12">
         <div className="item">
             <div >
-                <img src={data.image} alt=""/>
+                <img src={data.image} alt="" loading="lazy"/>
                 <div className="body">
                     <h4>{ data.title }</h4>
                     <p>{ data.description }</p>

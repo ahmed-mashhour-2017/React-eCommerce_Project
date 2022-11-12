@@ -12,9 +12,10 @@ export default function Register()  {
   // const {status}    =useSelector(st=>st.user);
      const [user,setUser]=useState({first_name:'',last_name:'',phone:""  ,email:'',password:''});
      const [confirm_pass,setconfirm_pass]=useState();
+     const [conditions,setconditions]=useState(false);
      const [formValidation,setformValidation]=useState( );
      const navigateor=useNavigate();
- const [errorList,seterrorList]=useState( []);
+      const [errorList,seterrorList]=useState( []);
     const dispatch=useDispatch();
   // const set_loggin=()=>{
 
@@ -33,7 +34,7 @@ export default function Register()  {
   const submitData=()=>{
     test()
     //console.log(formValidation);
-    if(formValidation.error )
+    if(formValidation.error ||conditions)
     {
       console.log(formValidation.error.details);
        seterrorList(formValidation.error.details)
@@ -211,7 +212,17 @@ export default function Register()  {
       </div>
       <div className=" mt-2 mb-2 col-lg-12 col-12">
         {/* <!-- text --> */}
-        <h6>By creating an account, you agree to Our Conditions of Use and Privacy Notice.
+        <h6><input type="checkbox" id="myCheck" onClick ={(e)=>{
+          e.target.checked===true?setconditions(true):setconditions(false);
+          console.log(e.target.checked);
+        }}/>
+        {
+           !conditions&&<span className= 'text-danger' > By creating an account, you agree to Our Conditions of Use and Privacy Notice.</span>
+        }
+         {
+            conditions&&<span className= 'text-success' > By creating an account, you agree to Our Conditions of Use and Privacy Notice.</span>
+        }
+         
         </h6>
       </div>
       <div className=" mt-2 mb-2 col-lg-12 col-12">
