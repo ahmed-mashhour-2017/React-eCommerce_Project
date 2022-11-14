@@ -4,7 +4,7 @@ import axios from 'axios';
 export const fetch_products= createAsyncThunk('products_reducers/fetch_products', async (items) => {
  
   const res=await  axios.get(`http://localhost:4000/${items}`);
-  //console.log(res.data);
+  // console.log(res.data);
   return res.data;
 })
 export const products_slice = createSlice({

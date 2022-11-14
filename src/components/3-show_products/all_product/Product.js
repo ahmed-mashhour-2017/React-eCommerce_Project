@@ -1,6 +1,8 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react'
 import './product.css';
 import {addToCart,remove} from '../../../helpers/cart-helper';
+//import { useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
  
 export default function Product({  data}) {
 
@@ -8,7 +10,7 @@ export default function Product({  data}) {
  const [addButton,setAddButton]=useState(true);
  let [amount,setAmount]=useState(0);
   let cartProducts  = [];
-
+    //const navigateor=useNavigate();
       useLayoutEffect(()=>{
         if("cart" in localStorage) {
            cartProducts = JSON.parse(localStorage.getItem("cart"));
@@ -39,9 +41,23 @@ export default function Product({  data}) {
                 <img src={data.image} alt="" loading="lazy"/>
                 <div className="body">
                     <h4>{ data.title }</h4>
+                    <div className="px-3 mb-2 d-flex justify-content-between align-datas-center ">
+   {/* <div className="d-flex w-80"  >
+   <button className="btn btn-info" onClick={()=>{
+                    navigateor('/oneproduct/'+data.id)
+              
+                 //   <NavLink to={`/Artists/${artists.id}`}>{artists.name}</NavLink></h3>
+                }} > Product Details</button>
+                <br/>
+            </div> */}
+ 
+   </div>
+
                     <p>{ data.description }</p>
                 </div>
             </div>
+            <h4>  <NavLink className="text-decoration-none" to={`/oneproduct/${data.id}`}>Product Details </NavLink></h4>
+
             {/* <div class="px-3 mb-2 d-flex justify-content-between align-datas-center ">
         <button class="btn btn-success" *ngIf="!addButton" (click)="addButton = true">Add To Cart</button>
         <div class="d-flex w-50" *ngIf="addButton">
@@ -51,7 +67,11 @@ export default function Product({  data}) {
         <span>{{data.price}} L.E</span>
         <br>
     </div> */}
+ 
+
             <div className="px-3 mb-2 d-flex justify-content-between align-datas-center ">
+          
+
                 {addButton&&<button className="btn btn-success" onClick={()=>{
                     setAddButton(false);
                     setAmount( 1);

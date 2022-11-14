@@ -15,6 +15,7 @@ import CheckOut from './components/4-cart/CheckOut';
 import { useSelector } from 'react-redux';
 import AdminProducts from './components/5-admin/products/AdminProducts';
 import AdminCart from './components/5-admin/cart/AdminCart';
+import OneProduct from './components/3-show_products/one_product/OneProduct';
  
 function App() {
 
@@ -47,6 +48,7 @@ function App() {
                       <Route path="Delivery" element={<Delivery/>}/>
                       <Route path="Contact" element={<Contact/>}/>
                       <Route path="About" element={<About/>}/>
+                     <Route path="oneproduct/:id" element={<OneProduct/>}/>
 
                       <Route path="Cart" element={<Cart/>}/>
                       <Route path="CheckOut" element={<CheckOut/>}/>
