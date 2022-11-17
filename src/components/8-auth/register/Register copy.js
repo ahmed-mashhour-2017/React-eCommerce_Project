@@ -11,17 +11,18 @@ export default function Register()  {
    const { status}=useSelector(st=>st.register);
   // const {status}    =useSelector(st=>st.user);
      const [user,setUser]=useState({first_name:'',last_name:'',phone:""  ,email:'',password:''});
-     const [confirm_pass,setconfirm_pass]=useState('');
+     const [confirm_pass,setconfirm_pass]=useState();
      const [conditions,setconditions]=useState(false);
-     const [formValid,setformValid]=useState(false );
+     const [formValidation,setformValidation]=useState( );
      const navigateor=useNavigate();
-     const dispatch=useDispatch();
+      const [errorList,seterrorList]=useState( []);
+    const dispatch=useDispatch();
   // const set_loggin=()=>{
 
   // }
-  const  test= ()=>{
-    setformValid(   schema.validate(user,{abortEarly:false}).error?false:true);
-     //console.log(  formValid);
+  const  test= async()=>{
+    setformValidation( await  schema.validate(user,{abortEarly:false}));
+    console.log(  errorList);
   }
   // useEffect(()=>{
   //  //  console.log(user_data +"\n"+status); 
@@ -32,16 +33,14 @@ export default function Register()  {
   // },[])
   const submitData=()=>{
     test()
-    //console.log(formValid);
-    if(formValid&&conditions&&(confirm_pass=== user.password))
+    //console.log(formValidation);
+    if(formValidation.error &&conditions)
     {
-      dispatch(register_login(user));
-      navigateor('/login')
-      //console.log(formValid.error.details);
-       //seterrorList(formValid.error.details)
-       
+      console.log(formValidation.error.details);
+       seterrorList(formValidation.error.details)
     }else{
-      alert("complete the form requirements")
+    dispatch(register_login(user));
+    navigateor('/login')
     }
     
   }
@@ -72,26 +71,9 @@ export default function Register()  {
           value={user.first_name}
           onChange={(e)=>{
             setUser({...user,first_name:e.target.value})
+            test()
           }}
-          
           />
-           
-          {
-            user.first_name!==''&&Joi.string().alphanum().required().validate( user.first_name).error&&
-            <small className= 'text-danger' > name should contain on letters and number only</small>
-          }
-       
-            {
-            user.first_name!==''&&Joi.string().min(3)
-           .validate( user.first_name).error&&
-            <small className= 'text-danger' > name is short</small>
-          }
-             {
-            user.first_name!==''&&Joi.string()
-            .max(30).validate( user.first_name).error&&
-            <small className= 'text-danger' > name is long</small>
-          }
-        
         {/* <!-- validat**display error  fristname --> */}
         {/* <div *ngIf="fristname?.invalid && (fristname?.touched|| fristname?.dirty)">
           <small className="text-danger" *ngIf="fristname?.errors?.['required']">frist Name is required</small>
@@ -113,25 +95,8 @@ export default function Register()  {
           value={user.last_name}
           onChange={(e)=>{
             setUser({...user,last_name:e.target.value})
-        
+            test()
           }}/>
-
-{
-            user.last_name!==''&&Joi.string().alphanum().required().validate( user.last_name).error&&
-            <small className= 'text-danger' > name should contain on letters and number only</small>
-          }
-       
-       {
-            user.last_name!==''&&Joi.string().min(3)
-           .validate( user.last_name).error&&
-            <small className= 'text-danger' > name is short</small>
-          }
-             {
-            user.last_name!==''&&Joi.string()
-            .max(30).validate( user.last_name).error&&
-            <small className= 'text-danger' > name is long</small>
-          }
-
         {/* <!-- validat**display error  lastname --> */}
         {/* <div *ngIf="lastname?.invalid && (lastname?.touched|| lastname?.dirty)">
           <small className="text-danger" *ngIf="lastname?.errors?.['required']">lastname is required</small>
@@ -152,15 +117,9 @@ export default function Register()  {
           value={user.email}
           onChange={(e)=>{
             setUser({...user,email:e.target.value})
-        
+            test()
           }}
           />
-            {
-            user.email!==''&&Joi.string()
-            .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).validate( user.email).error&&
-            <small className= 'text-danger' > email must be  valid </small>
-          }
-
         {/* <!-- validat**display error  email --> */}
         {/* <div *ngIf="email?.invalid && (email?.touched|| email?.dirty)">
           <small className="text-danger" *ngIf="email?.errors?.['required']">email is required</small>
@@ -181,13 +140,8 @@ export default function Register()  {
                   }
           onChange={(e)=>{
             setUser({...user,phone:e.target.value})
-            
+            test()
           }}/>
-
-          {
-            user.phone!==''&&Joi.string().length(11).pattern(/^[0-9]+$/).required().validate( user.phone).error&&
-            <small className= 'text-danger' > phone must be  valid </small>
-          }
         {/* <!-- validat**display error  phone --> */}
         {/* <div *ngIf="phone?.invalid && (phone?.touched|| phone?.dirty)">
           <small className="text-danger" *ngIf="phone?.errors?.['required']">phone is required</small>
@@ -211,14 +165,9 @@ export default function Register()  {
           value={user.password}
           onChange={(e)=>{
             setUser({...user,password:e.target.value})
-            
+            test()
           }}
           />
-          {
-            user.password!==''&&Joi.string()
-            .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).validate( user.password).error&&
-            <small className= 'text-danger' > password must be  valid </small>
-          }
 
         {/* <!-- validat**display error  password --> */}
         {/* <div *ngIf="password?.invalid && (password?.touched|| password?.dirty)">
@@ -231,7 +180,6 @@ export default function Register()  {
       <div className="mt-2 mb-2  col-lg-12 col-12">
         <label>Confirm password:</label>
         <input 
-        type="password" 
         //</div>[className.is-invalid]="RegisterForm.errors?.['misMatch']" type="password"
          // [(ngModel)]="usermodel.confirmpassword" formControlName="confirmpassword"
            className="form-control"
@@ -239,18 +187,8 @@ export default function Register()  {
           value={confirm_pass}
           onChange={(e)=>{
             setconfirm_pass(e.target.value)
-            
+            test()
           }}/>
-           {
-            confirm_pass!==''&&Joi.string()
-            .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).validate( confirm_pass).error&&
-            <small className= 'text-danger' > password must be  valid </small>
-          }
-          <br/>
-            {
-            confirm_pass!==''&&confirm_pass!== user.password&&
-            <small className= 'text-danger' > two password must be matched </small>
-          }
         {/* <!-- validat**display error  confirm password --> */}
         {/* <small className="text-danger" *ngIf="RegisterForm.errors?.['misMatch']">password and confirmPassword not
           macth</small>

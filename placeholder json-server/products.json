@@ -865,75 +865,39 @@
       ]
     }
   ],
-  "carts": [
-    {
-      "userId": 5,
-      "date": "2022-10-10T18:15:43.700Z",
-      "products": [
-        {
-          "productId": 1,
-          "quantity": 1
-        },
-        {
-          "productId": 2,
-          "quantity": 2
-        }
-      ],
-      "id": 1
-    },
-    {
-      "userId": 5,
-      "date": "2022-10-10T23:45:33.507Z",
-      "products": [],
-      "id": 2
-    },
-    {
-      "userId": 5,
-      "date": "2022-10-10T18:15:43.700Z",
-      "products": [
-        {
-          "productId": 5,
-          "quantity": 1
-        },
-        {
-          "productId": 2,
-          "quantity": 2
-        }
-      ],
-      "id": 1
-    },
-    {
-      "userId": 5,
-      "date": "2022-10-10T18:15:43.700Z",
-      "products": [
-        {
-          "productId": 4,
-          "quantity": 1
-        },
-        {
-          "productId": 2,
-          "quantity": 2
-        }
-      ],
-      "id": 1
-    }
-  ],
+  "carts": [],
   "users": [
     {
-      "f_name": "admin",
-      "l_name": "admin",
+      "first_name": "admin",
+      "last_name": "admin",
       "phone": "01060441588",
       "email": "admin@admin.com",
       "password": "admin",
       "id": 0
     },
     {
-      "f_name": "ahmed",
-      "l_name": "mashhour",
+      "first_name": "ahmed",
+      "last_name": "mashhour",
       "phone": "01060441588",
       "email": "ahmed@yahoo.com",
       "password": "asd",
       "id": 1
+    },
+    {
+      "first_name": "",
+      "last_name": "",
+      "phone": "01060441588",
+      "email": "",
+      "password": "asd",
+      "id": 2
+    },
+    {
+      "first_name": "aaa",
+      "last_name": "sss",
+      "phone": "01060441588",
+      "email": "dd@yy.com",
+      "password": "asd",
+      "id": 3
     }
   ]
 }

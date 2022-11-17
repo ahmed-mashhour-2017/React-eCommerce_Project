@@ -2,3 +2,10 @@ npm install -g json-server
 
 json-server --watch products.json 
 json-server --watch products.json --port 4000
+
+
+
+/////////////////
+npm install -D json-server json-server-auth
+
+json-server products.json -m ./node_modules/json-server-auth --port 4000 

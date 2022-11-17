@@ -1,31 +1,49 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import axios from 'axios';
 
+export const add_to_cart= createAsyncThunk('cart_reducers/add_to_cart', async (user) => {
  
+  
+  const res=await  axios.post(" http://localhost:4000/carts/",user);
+  //console.log(res.data);
+  return res.data;
+})
 export const cart_slice = createSlice({
-  name: 'counter',
+  name: 'cart_reducers',
   initialState : {
-    current_categry: "all",
+    user_data:[],    
+  status:"",
+  Loggin_state:false
   },
   reducers: {
-        change_category:(state,action)=>{
-            state.current_categry=action.payload;
-        }
-    // inc_action: (state) => {
-    //        state.count += 1
-    // },
-    // dec_action: (state) => {
-    //   state.count -= 1
-    // },
-    // inc_action_by_val: (state, action) => {
-    //   state.count += action.payload
-    // },
-    // dec_action_by_val: (state, action) => {
-    //     state.count -= action.payload
-    //   },
-   
+    change_Loggin_state:(state,action)=>{
+      state.Loggin_state=action.payload;
+      if(!action.payload){
+        state.user_data  =[];
+        state.status="";
+      }
+  }
+  
   },
+  extraReducers:{
+    [add_to_cart.pending]:(state) => {
+      state.status="loading";
+           
+      },
+      [add_to_cart.fulfilled]:(state,action) => {
+        state.user_data  = action.payload; 
+        console.log( action.payload);
+       
+        state.status="success";   
+        },
+        [add_to_cart.rejected]:(state) => {
+          state.user_data  = [];
+          state.status="error";
+                   
+          },
+  }
 })
 
- export const {  change_category} = cart_slice.actions
-
+export const {  change_Loggin_state} = cart_slice.actions
 export default cart_slice.reducer
+ 

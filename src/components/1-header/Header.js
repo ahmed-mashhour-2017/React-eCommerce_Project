@@ -7,7 +7,7 @@ import { change_Loggin_state } from '../../store_redux_toolkit/reducers/user_sli
  export default function Header() {
    
     const{Loggin_state:isLogedIn}=useSelector(st=>st.user);
-    const{f_name:name,email}=useSelector((st)=>{if(st.user.user_data[0])
+    const{first_name:name,email}=useSelector((st)=>{if(st.user.user_data[0])
         return st.user.user_data[0];
         else return ""});
      const dispatch=useDispatch();

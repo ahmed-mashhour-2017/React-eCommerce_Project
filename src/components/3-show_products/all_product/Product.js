@@ -9,11 +9,11 @@ export default function Product({  data}) {
  
  const [addButton,setAddButton]=useState(true);
  let [amount,setAmount]=useState(0);
-  let cartProducts  = [];
+  let [cartProducts,setcartProducts]  =useState([]) ;
     //const navigateor=useNavigate();
       useLayoutEffect(()=>{
         if("cart" in localStorage) {
-           cartProducts = JSON.parse(localStorage.getItem("cart"));
+            setcartProducts (...cartProducts,JSON.parse(localStorage.getItem("cart"))) ;
            let exist = cartProducts.find(it => it.item.id === data.id)
            //console.log(exist);
            if(exist) {
