@@ -42,14 +42,7 @@ export default function Product({  data}) {
                 <div className="body">
                     <h4>{ data.title }</h4>
                     <div className="px-3 mb-2 d-flex justify-content-between align-datas-center ">
-   {/* <div className="d-flex w-80"  >
-   <button className="btn btn-info" onClick={()=>{
-                    navigateor('/oneproduct/'+data.id)
-              
-                 //   <NavLink to={`/Artists/${artists.id}`}>{artists.name}</NavLink></h3>
-                }} > Product Details</button>
-                <br/>
-            </div> */}
+ 
  
    </div>
 
@@ -58,15 +51,7 @@ export default function Product({  data}) {
             </div>
             <h4>  <NavLink className="text-decoration-none" to={`/oneproduct/${data.id}`}>Product Details </NavLink></h4>
 
-            {/* <div class="px-3 mb-2 d-flex justify-content-between align-datas-center ">
-        <button class="btn btn-success" *ngIf="!addButton" (click)="addButton = true">Add To Cart</button>
-        <div class="d-flex w-50" *ngIf="addButton">
-            <input type="number" class="form-control" [(ngModel)]="amount">
-            <button class="btn btn-danger" (click)="add();addButton = false">Add</button>
-        </div>
-        <span>{{data.price}} L.E</span>
-        <br>
-    </div> */}
+          
  
 
             <div className="px-3 mb-2 d-flex justify-content-between align-datas-center ">

@@ -32,21 +32,7 @@ export default function AdminCart() {
    
     <div className="cartBox">
         
-        {/* <form [formGroup]="form">
-            <div className="row">
-                    <div className="col-md-3">
-                        <label for="">Start Date</label>
-                        <input type="date" formControlName="start" className="form-control">
-                    </div>
-                    <div className="col-md-3">
-                        <label for="">End Date</label>
-                        <input type="date"  formControlName="end" className="form-control" >
-                    </div>
-                    <div className="col-md-2 d-flex align-items-end">
-                        <button className="btn btn-success" (click)="applyFilter()" >Apply</button>
-                    </div>
-            </div>
-        </form> */}
+    
             
         <table className="table table-striped">
             <thead>
@@ -58,17 +44,7 @@ export default function AdminCart() {
                 </tr>
             </thead>
             <tbody>
-                {/* <tr *ngFor="let item of carts; let index = index" >
-                    <td></td>
-                    <td>{{item.date | date:"longDate"}}</td>
-                    <td>
-                      {{item.products.length}}
-                    </td>
-                    <td >
-                        <button className="btn btn-danger mx-2" (click)="deleteCart(item.id)" >Delete</button>
-                        <button className="btn btn-primary" data-toggle="modal" data-target="#viewCart" (click)="view(index)">View</button>
-                    </td>
-                </tr> */}
+            
                   {
                                 data.map((item,i)=>{
                                     return (
@@ -87,8 +63,7 @@ export default function AdminCart() {
                                             }}>Delete</button>
                                             <button className="btn btn-primary" 
                                             data-bs-toggle="modal" data-bs-target="#viewCart"
-                                             //(click)="view(index)"
-                                             onClick={()=>{
+                                              onClick={()=>{
                                                 setcurrent_carts(item.products)
                                              }}
                                              >View</button>

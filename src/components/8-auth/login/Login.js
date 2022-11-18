@@ -20,9 +20,8 @@ const navigateor=useNavigate();
     <> 
     <div className="container login ">
   <form className="content mt-5 mb-1 "   
-//  [formGroup]="LoginForm"
-    >
-    {/* <!-- {{userlogin|json}} --> */
+     >
+    { 
     !Loggin_state&&
      <h3 className="text-center">Sign in </h3>
     }
@@ -73,13 +72,7 @@ const navigateor=useNavigate();
        
          }
       
-        {/* <!-- validat**display error  email --> */}
-        {/* <div *ngIf="email?.invalid && (email?.touched|| email?.dirty)">
-          <small className="text-danger" *ngIf="email?.errors?.['required']">email is required</small>
-          <small className="text-danger" *ngIf="email?.errors?.['email']">email must be invalid </small>
-
-        </div> */}
-        {/* <!-- end tag error --> */}
+      
       </div>
         {
           (status==="success"&&user_data.length!==0)&&!Loggin_state&&
@@ -95,13 +88,7 @@ const navigateor=useNavigate();
           setPassword(e.target.value);
          }}
          />
-        {/* <!-- validat**display error  password --> */}
-        {/* <div *ngIf="password?.invalid && (password?.touched|| password?.dirty)">
-          <small className="text-danger" *ngIf="password?.errors?.['required']">password is required</small>
-          <small className="text-danger" *ngIf="password?.errors?.['maxLength']">password is max </small>
-          <small className="text-danger" *ngIf="password?.errors?.['minLength']">password is short </small>
-        </div>
-        <!-- end tag error --> */}
+       
       </div>
       <div className=" mt-2 mb-2 col-lg-12 col-12">
         {/* <!-- button --> */}

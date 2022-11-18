@@ -28,7 +28,7 @@ export default function OneProduct() {
         {
             status!=="loading"&&
             <div className="row" 
-            // *ngIf="!loading"
+             
             >
                 <div className="col-md-5 col-sm-12">
                     <img src={data[0].image} alt="sas" loading="lazy"/>
@@ -53,9 +53,7 @@ export default function OneProduct() {
             </div>
         }
    
-    {/* <div className="text-center">
-        <app-spinner *ngIf="loading"></app-spinner>
-    </div> */
+    { 
     
     status==="loading"&&
     <div className="text-center">

@@ -1,15 +1,17 @@
 import React, {     useLayoutEffect,  useState } from 'react';
 import './cart.css';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+//import { add_to_cart } from './../../store_redux_toolkit/reducers/cart_slice';
+import axios from 'axios';
 export default function Cart() {
    
     let [total,setTotal] = useState(0);
     const [success,setSuccess ]  = useState(false);
-    const{Loggin_state:isLogedIn}=useSelector(st=>st.user);
+    const{Loggin_state:isLogedIn,user_data}=useSelector(st=>st.user);
     const navigateor=useNavigate();
     let [cartProducts,setcartProducts]  =useState([{item:'',quantity:0}]) ;
-
+   // let dispatch_cart=useDispatch();
   useLayoutEffect(()=>{
     if("cart" in localStorage ) {
  
@@ -18,12 +20,12 @@ export default function Cart() {
  
       
      
-        //console.log(cartProducts);
+      //console.log(cartProducts);
       // let x=JSON.parse(localStorage.getItem("cart")) ;
       // console.log(x);
     }
     getCartTotal()
-    console.log( ...cartProducts);
+    //console.log( ...cartProducts);
 },[[...cartProducts].quantity ]);
   
 useLayoutEffect(()=>{
@@ -83,13 +85,31 @@ const getCartTotal=()=> {
      
   }
 
+const post_product=()=>{
+  let products=[...cartProducts].map((it )=>{
+    return({  "productId": it.item.id,
+    "quantity": it.quantity})
 
+  });
+//console.log(list_orders);
+let post_cart=
+  {
+    "userId": user_data[0].id,
+    "date":Date().toString(),
+    products
+  }
+
+//console.log(post_cart);
+//dispatch_cart(add_to_cart(post_cart))
+axios.post("http://localhost:4000/carts/",post_cart);
+}
   const addCart=()=> {
 //    let products = cartProducts.map(item => {
 //     return {productId:item.item.id , quantity:item.quantity
 //     }
 //    })
 if(total>0){
+  post_product();
   setSuccess(true);
    setTimeout(() => {
     setSuccess(false);
@@ -115,7 +135,7 @@ if(total>0){
               <input className="form-control"  type="number" value={it.quantity}onChange={(e)=>{
                   detectChange(i,parseInt( e.target.value) );
               }} 
-              // [(ngModel)]="item.quantity" 
+             
               
               min="0"/>
               <button className="btn btn-dark" onClick={()=>{
@@ -158,55 +178,12 @@ if(total>0){
             </tr>
         </thead>
         <tbody>
-            {/* <tr *ngFor="let item of cartProducts; let index = index" >
-                <td><img src="{{item.item.image}}" alt=""></td>
-                <td>{{item.item.title}}</td>
-                <td>{{item.item.price}} L.E</td>
-                <td>
-                    <div className="quantity">
-                        <button className="btn btn-dark" (click)="addAmount(index) " >+</button>
-                        <input className="form-control"  type="number" (change)="detectChange()" [(ngModel)]="item.quantity" min="1">
-                        <button className="btn btn-dark" (click)="minsAmount(index)" >-</button>
-                    </div>
-                </td>
-                <td>{{item.item.price * item.quantity}} L.E</td>
-                <td>
-                    <button className="btn btn-danger" (click)="deleteProduct(index)" >Delete</button>
-                </td>
-            </tr> */}
+            
             {
               
               orders
             }
-             {/*
-              <tr  >
-                <td><img src={cartProducts[0].item.image} alt=""/></td>
-                <td>{ cartProducts[0].item.title} </td>
-                <td>{ cartProducts[0].item.price} L.E</td>
-                <td>
-                    <div className="quantity">
-                        <button className="btn btn-dark" onClick={()=>{
-                            addAmount(0);
-                        }} >+</button>
-                        <input className="form-control"  type="number" onChange={(e)=>{
-                            detectChange(0,parseInt( e.target.value) );
-                        }} 
-                        // [(ngModel)]="item.quantity" 
-                        
-                        min="1"/>
-                        <button className="btn btn-dark" onClick={()=>{
-                            minsAmount(0);
-                        }} >-</button>
-                    </div>
-                </td>
-                <td>{cartProducts[0].item.price * cartProducts[0].quantity} L.E</td>
-                <td>
-                    <button className="btn btn-danger" onClick={()=>{
-                        deleteProduct(0);
-                    }}  >Delete</button>
-                </td>
-         </tr>      
-      */}
+             
    
         </tbody> 
         <tfoot>
@@ -225,8 +202,8 @@ if(total>0){
     </table>
     
 </div>
-{/* <div className="alert alert-success" role="alert" *ngIf="success"><strong>Well done!</strong> Your Order is Successfully Send</div> */
-success&&<div className="alert alert-success" role="alert"  ><strong>Well done!</strong> Your Order is Successfully Send <br/>Now You Will Redirect To Check Out Payment</div> 
+{
+ success&&<div className="alert alert-success" role="alert"  ><strong>Well done!</strong> Your Order is Successfully Send <br/>Now You Will Redirect To Check Out Payment</div> 
 }
     </>
   )

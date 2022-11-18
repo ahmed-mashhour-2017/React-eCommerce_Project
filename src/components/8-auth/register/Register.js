@@ -50,24 +50,20 @@ export default function Register()  {
     <> 
    <div className="container  register">
   <form className="content mt-5 mb-1 p-25 "  
-  // [formGroup]="RegisterForm"
-    onSubmit={(e)=>{
+     onSubmit={(e)=>{
       e.preventDefault();
       submitData();
     }} 
     >
       {
-     // errorList[0].message&&<div>errorList[0].message</div>
-      }
-    {/* {{usermodel|json}} */}
-    <h3 className="text-center">Create account </h3>
+       }
+     <h3 className="text-center">Create account </h3>
     <div className="row">
       <div className="mt-2 mb-2 col-lg-6 col-6">
         {/* <!-- FristName --> */}
         <label>FristName:</label>
         <input type="text" 
-       // formControlName="fristname" [(ngModel)]="usermodel.fristname" 
-        className="form-control"
+         className="form-control"
           placeholder="Frist Name"
           value={user.first_name}
           onChange={(e)=>{
@@ -92,22 +88,13 @@ export default function Register()  {
             <small className= 'text-danger' > name is long</small>
           }
         
-        {/* <!-- validat**display error  fristname --> */}
-        {/* <div *ngIf="fristname?.invalid && (fristname?.touched|| fristname?.dirty)">
-          <small className="text-danger" *ngIf="fristname?.errors?.['required']">frist Name is required</small>
-          <small className="text-danger" *ngIf="fristname?.errors?.['pattern']">frist Name Length must be only
-            characters</small>
-          <small className="text-danger" *ngIf="fristname?.errors?.['minLength']">fristName more than 3 characters</small>
-
-        </div> */}
-        {/* <!-- end tag error --> */}
+         
       </div>
       <div className="mt-2 mb-2 col-lg-6 col-6">
         {/* <!-- LasttName --> */}
         <label>LastName:</label>
         <input type="text" 
-        //</div>formControlName="lastname" 
-        // [(ngModel)]="usermodel.lastname"
+       
          className="form-control"
           placeholder="Last Name"
           value={user.last_name}
@@ -132,22 +119,13 @@ export default function Register()  {
             <small className= 'text-danger' > name is long</small>
           }
 
-        {/* <!-- validat**display error  lastname --> */}
-        {/* <div *ngIf="lastname?.invalid && (lastname?.touched|| lastname?.dirty)">
-          <small className="text-danger" *ngIf="lastname?.errors?.['required']">lastname is required</small>
-          <small className="text-danger" *ngIf="lastname?.errors?.['pattern']">lastname Length must be only
-            characters</small>
-          <small className="text-danger" *ngIf="lastname?.errors?.['minLength']">lastname more than 3 characters</small>
-
-        </div>
-        <!-- end tag error --> */}
+    
       </div>
       <div className="mt-2 mb-2 col-lg-12 col-12">
         {/* <!-- email --> */}
         <label>Email:</label>
         <input type="text" 
-        //formControlName="email" [(ngModel)]="usermodel.email" 
-        className="form-control"
+         className="form-control"
           placeholder="Your Email"
           value={user.email}
           onChange={(e)=>{
@@ -161,20 +139,13 @@ export default function Register()  {
             <small className= 'text-danger' > email must be  valid </small>
           }
 
-        {/* <!-- validat**display error  email --> */}
-        {/* <div *ngIf="email?.invalid && (email?.touched|| email?.dirty)">
-          <small className="text-danger" *ngIf="email?.errors?.['required']">email is required</small>
-          <small className="text-danger" *ngIf="email?.errors?.['email']">email must be invalid </small>
-
-        </div>
-        <!-- end tag error --> */}
+        
       </div>
       <div className="mt-2 mb-2 col-lg-12 col-12">
         {/* <!-- phone --> */}
         <label>phone:</label>
         <input type="text" 
-       // formControlName="phone"         [(ngModel)]="usermodel.phone"
-         className="form-control"
+          className="form-control"
           placeholder="Phone Number"
           value={
               user.phone              
@@ -188,14 +159,7 @@ export default function Register()  {
             user.phone!==''&&Joi.string().length(11).pattern(/^[0-9]+$/).required().validate( user.phone).error&&
             <small className= 'text-danger' > phone must be  valid </small>
           }
-        {/* <!-- validat**display error  phone --> */}
-        {/* <div *ngIf="phone?.invalid && (phone?.touched|| phone?.dirty)">
-          <small className="text-danger" *ngIf="phone?.errors?.['required']">phone is required</small>
-          <small className="text-danger" *ngIf="phone?.errors?.['pattern']">phone must be only number </small>
-          <small className="text-danger" *ngIf="phone?.errors?.['minLength']">phone number is short </small>
-          <small className="text-danger" *ngIf="phone?.errors?.['maxLength']">phone number is max </small>
-
-        </div> */}
+    
 
         {/* <!-- end tag error --> */}
       </div>
@@ -204,8 +168,7 @@ export default function Register()  {
         <label>Password:</label>
 
         <input type="password" 
-       //</div> formControlName="password"
-        // [(ngModel)]="usermodel.password" 
+ 
          className="form-control "
           placeholder="Enter New password"
           value={user.password}
@@ -219,22 +182,13 @@ export default function Register()  {
             .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).validate( user.password).error&&
             <small className= 'text-danger' > password must be  valid </small>
           }
-
-        {/* <!-- validat**display error  password --> */}
-        {/* <div *ngIf="password?.invalid && (password?.touched|| password?.dirty)">
-          <small className="text-danger" *ngIf="password?.errors?.['required']">password is required</small>
-          <small className="text-danger" *ngIf="password?.errors?.['maxLength']">password is max </small>
-          <small className="text-danger" *ngIf="password?.errors?.['minLength']">password is short </small>
-        </div>
-        <!-- end tag error --> */}
+ 
       </div>
       <div className="mt-2 mb-2  col-lg-12 col-12">
         <label>Confirm password:</label>
         <input 
         type="password" 
-        //</div>[className.is-invalid]="RegisterForm.errors?.['misMatch']" type="password"
-         // [(ngModel)]="usermodel.confirmpassword" formControlName="confirmpassword"
-           className="form-control"
+             className="form-control"
           placeholder="RE- password"
           value={confirm_pass}
           onChange={(e)=>{
@@ -251,10 +205,7 @@ export default function Register()  {
             confirm_pass!==''&&confirm_pass!== user.password&&
             <small className= 'text-danger' > two password must be matched </small>
           }
-        {/* <!-- validat**display error  confirm password --> */}
-        {/* <small className="text-danger" *ngIf="RegisterForm.errors?.['misMatch']">password and confirmPassword not
-          macth</small>
-        <!-- end tag error --> */}
+        
       </div>
       <div className=" mt-2 mb-2 col-lg-12 col-12">
         {/* <!-- button --> */}

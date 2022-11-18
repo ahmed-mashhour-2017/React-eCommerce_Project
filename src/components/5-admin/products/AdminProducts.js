@@ -51,13 +51,7 @@ export default function AdminProducts() {
             </tr>
         </thead>
         <tbody>
-            {/* <tr *ngFor="let item of products; let i = index">
-                <td><img src="{{item.image}}" alt=""/></td>
-                <td>{{item.title}}</td>
-                <td>{{item.category}}</td>
-                <td>{{item.price}} L.E</td>
-                <td><button className="btn btn-warning"  data-toggle="modal" data-target="#viewCart" (click)="update(item)">Update</button></td>
-            </tr> */
+            { 
             data.map((item,i)=>{
               return(
                 <tr key={i} >
@@ -135,8 +129,7 @@ export default function AdminProducts() {
                          />
                     </div>
                     <div className="col-md-4 col-sm-12">
-                        {/* <app-select [data]="categories" [title]="'Categories'" (selectedValue)="getSelectedCategory($event)" [all]="false" [select]="form.value.category" ></app-select> */}
-                    <Selector/>
+                     <Selector/>
                     </div>
                     <div className="col-md-4 col-sm-12">
                         <label  >Image</label>
@@ -189,8 +182,7 @@ export default function AdminProducts() {
                       dispatch(admin_fetch_products(["products","get"]));
 
                     }}
-                    // [disabled]="!form.valid" (click)="addProduct()"
-                    >{formBtn}</button>
+                     >{formBtn}</button>
                 </div>
             </form>
         </div>

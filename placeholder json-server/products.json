@@ -863,9 +863,97 @@
         "https://dummyjson.com/image/i/products/30/3.jpg",
         "https://dummyjson.com/image/i/products/30/thumbnail.jpg"
       ]
+    },
+    {
+      "title": "aaa",
+      "price": "55",
+      "description": "aaa",
+      "category": "fragrances",
+      "image": "aaa",
+      "rating": {
+        "rate": 0,
+        "count": 0
+      },
+      "id": 51
     }
   ],
-  "carts": [],
+  "carts": [
+    {
+      "userId": 5,
+      "date": "2022-10-10T18:15:43.700Z",
+      "products": [
+        {
+          "productId": 1,
+          "quantity": 1
+        },
+        {
+          "productId": 2,
+          "quantity": 2
+        }
+      ],
+      "id": 1
+    },
+    {
+      "userId": 4,
+      "date": "2022-10-10T23:45:33.507Z",
+      "products": [],
+      "id": 2
+    },
+    {
+      "userId": 11,
+      "date": "Thu Nov 17 2022 14:25:39 GMT+0200 (توقيت شرق أوروبا الرسمي)",
+      "products": [
+        {
+          "productId": 9,
+          "quantity": 1
+        },
+        {
+          "productId": 10,
+          "quantity": 1
+        },
+        {
+          "productId": 11,
+          "quantity": 1
+        }
+      ],
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "date": "Thu Nov 17 2022 15:04:06 GMT+0200 (توقيت شرق أوروبا الرسمي)",
+      "products": [
+        {
+          "productId": 9,
+          "quantity": 3
+        },
+        {
+          "productId": 10,
+          "quantity": 1
+        },
+        {
+          "productId": 27,
+          "quantity": 1
+        },
+        {
+          "productId": 3,
+          "quantity": 5
+        },
+        {
+          "productId": 4,
+          "quantity": 0
+        },
+        {
+          "productId": 16,
+          "quantity": 1
+        },
+        {
+          "productId": 17,
+          "quantity": 1
+        }
+      ],
+      "id": 4
+    }
+  ],
   "users": [
     {
       "first_name": "admin",
@@ -884,20 +972,12 @@
       "id": 1
     },
     {
-      "first_name": "",
-      "last_name": "",
+      "first_name": "ahmed123",
+      "last_name": "add",
       "phone": "01060441588",
-      "email": "",
+      "email": "ahmed123@gamil.com",
       "password": "asd",
       "id": 2
-    },
-    {
-      "first_name": "aaa",
-      "last_name": "sss",
-      "phone": "01060441588",
-      "email": "dd@yy.com",
-      "password": "asd",
-      "id": 3
     }
   ]
 }

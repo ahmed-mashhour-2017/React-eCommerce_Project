@@ -47,22 +47,12 @@ return(
   return (
     <>
     <div className=" m-0 p-4 container ">
-    {/* <app-nav [data]="categories" [title]="'Categories'" (selectedValue)="filterCategory($event)"></app-nav>
-    <app-slider></app-slider> */
-    }
+     
     <div className="box mt-5 container">
         <div className="my-2 w-25">
-            {/* <app-select [data]="categories" [title]="'Categories'" (selectedValue)="filterCategory($event)">
-            </app-select> */}
-
+           
         </div>
-        {//<div id="products_container" className="row" *ngIf="!loading&&!product_not_found">
-            //<div className="col-md-3 col-sm-12" *ngFor="let item of products">
-                //</div><app-product [data]="item" (item)="addToCart($event)"></app-product>
-                
-            //</></div>
-        
-       // </div>
+        { 
        (data.length>0&&status!=="loading")&& 
        <div id="products_container" className="row" >
         {one_produt}
@@ -70,20 +60,10 @@ return(
         }
         {
             
-            //<div id="products_container" className="row" *ngIf="!loading&&!product_not_found">
              
-        
-       // </div>
         }
        { 
-       // <div className="text-center w-100" *ngIf="product_not_found" style="color:red">
-
-        //     <h1>Product Not Found</h1>
-
-        // </div>
-        // <div className="text-center w-100" *ngIf="loading">
-        //     <app-spinner></app-spinner>
-        // </div>
+      
         status==="error"&&
            <div className="text-center w-100 text-danger"   >
 
